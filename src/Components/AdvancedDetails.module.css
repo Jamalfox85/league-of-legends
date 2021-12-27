@@ -1,0 +1,9 @@
+.advanced_details_wrapper {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
