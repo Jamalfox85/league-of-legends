@@ -1,10 +1,54 @@
+@import url("http://fonts.cdnfonts.com/css/friz-quadrata-std");
+
 .wrapper {
   height: 15vh;
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   border-bottom: solid 2px black;
+  background-color: #333;
+  font-family: "Friz Quadrata Std", sans-serif;
+}
+.contentwrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  color: #d4af37;
+}
+.logo {
+  font-size: 3em;
 }
 .searchbar {
+  border: none;
+}
+input {
+  line-height: 1.5em;
+  margin-right: 0.5em;
+  border-radius: 4px;
+  outline: none;
+  background-color: rgba(11, 196, 226, 0.5);
+  border: solid 1px rgb(11, 196, 226);
+  padding-left: 10px;
+  font-weight: bold;
+}
+input:focus {
+  transition: 0.1s ease-in-out;
+  background-color: rgba(11, 196, 226, 1);
+  color: white;
+}
+button {
+  padding: 0.5em 1em;
+  background-color: rgb(11, 196, 226);
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  margin: 0.5em;
+  font-weight: bold;
+}
+button:hover {
+  transition: 0.3s ease-in-out;
+  background-color: rgb(6, 166, 190);
+  cursor: pointer;
 }

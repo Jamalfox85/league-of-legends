@@ -4,9 +4,9 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>LOL Stats</h1>
-      <div className={styles.searchbar}>
-        <form>
+      <div className={styles.contentwrapper}>
+        <h1 className={styles.logo}>LoL Champions</h1>
+        <form className={styles.searchbar}>
           <input type="text" />
           <button type="submit">Search</button>
         </form>

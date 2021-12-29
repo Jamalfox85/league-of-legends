@@ -64,16 +64,25 @@ const Main = () => {
   console.log(data);
   return (
     <div className={styles.wrapper}>
-      <h1>test</h1>
       <Filter displayAll={displayAll} displayFilter={displayFilter} />
       <div className={styles.championgrid}>
         {championList.map(([key, value, index]) => (
           <div className={styles.championcard} key={key}>
-            {value.name}
-            {value.title}
-            {value.tags}
+            <div className={styles.cardname}>{value.name}</div>
+            <div className={styles.cardtitle}>{value.title}</div>
+            <div className={styles.cardtags}>
+              <div className={styles.cardtag}>{value.tags[0]}</div>
+              <div className={styles.cardtag}>{value.tags[1]}</div>
+            </div>
+            <div className={styles.image}>
+              <img
+                alt="champion"
+                src={`http://ddragon.leagueoflegends.com/cdn/5.9.1/img/champion/${value.image.full}`}
+              />
+            </div>
             {/* <button onClick={() => toggleModal(key)}> */}
             <button
+              className={styles.advdetailsbttn}
               onClick={() => {
                 toggleModal();
                 setModalData({
