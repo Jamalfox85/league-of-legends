@@ -2,14 +2,12 @@
   height: auto;
   width: 100%;
   background-color: #222;
-
 }
 
 .championgrid {
   height: auto;
   display: flex;
   flex-wrap: wrap;
-
   justify-content: center;
 }
 

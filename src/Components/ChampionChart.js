@@ -35,7 +35,12 @@ const ChampionChart = ({ statData }) => {
 
   return (
     <div>
-      <Radar data={data} />
+      <Radar
+        data={data}
+        width={500}
+        height={500}
+        options={{ maintainAspectRatio: false }}
+      />
     </div>
   );
 };

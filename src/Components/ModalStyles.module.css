@@ -1,0 +1,34 @@
+@import url("http://fonts.cdnfonts.com/css/friz-quadrata-std");
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: "Friz Quadrata Std", sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+.modalheader {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+.modalname {
+  font-size: 3em;
+}
+.modaltitle {
+  font-size: 1.5em;
+}
+.modaltags {
+  font-size: 1em;
+}
+.modalbody {
+  width: 75%;
+  display: flex;
+  align-items: center;
+}
+.modalblurb {
+  margin: 2em;
+  width: 50vw;
+  display: relative;
+  line-height: 2.5em;
+}

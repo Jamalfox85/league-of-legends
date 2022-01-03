@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Filter from "./Filter";
 import styles from "./Main.module.css";
+import modalstyles from "./ModalStyles.module.css";
 import Modal from "react-modal";
 import ChampionChart from "./ChampionChart";
 
-const Main = () => {
+const Main = ({ searchData }) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [allChampions, setAllChampions] = useState(true);
   const [filter, setFilter] = useState(null);
+  const [useFilter, setUseFilter] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState({});
   const tags = ["Assassin", "Fighter", "Mage", "Marksman", "Support", "Tank"];
@@ -19,13 +21,25 @@ const Main = () => {
   };
   const displayFilter = (id) => {
     setAllChampions(false);
+    setUseFilter(true);
     setFilter(tags[id]);
+  };
+  const displaySearch = (searchData) => {
+    setAllChampions(false);
+    setUseFilter(false);
   };
 
   function toggleModal(modalId) {
     setIsOpen(!isOpen);
     console.log(modalData);
   }
+
+  useEffect(() => {
+    if (searchData.length > 0) {
+      displaySearch();
+    }
+    console.log(searchData);
+  }, [searchData]);
 
   useEffect(() => {
     fetch(
@@ -57,11 +71,16 @@ const Main = () => {
   const championList = championData.filter((champion) => {
     if (allChampions) {
       return championData;
-    } else {
+    } else if (!allChampions && useFilter) {
       return champion[1].tags.includes(filter);
+    } else if (!allChampions && !useFilter) {
+      return champion[1].name.toLowerCase().includes(searchData.toLowerCase());
+    } else {
+      return null;
     }
   });
   console.log(data);
+
   return (
     <div className={styles.wrapper}>
       <Filter displayAll={displayAll} displayFilter={displayFilter} />
@@ -76,7 +95,7 @@ const Main = () => {
             </div>
             <div className={styles.image}>
               <img
-                alt="champion"
+                alt="Champion Portrait Not Available"
                 src={`http://ddragon.leagueoflegends.com/cdn/5.9.1/img/champion/${value.image.full}`}
               />
             </div>
@@ -106,15 +125,26 @@ const Main = () => {
             {/* {showDetails ? <AdvancedDetails/> : <h1>Test</h1>} */}
           </div>
         ))}
-        <Modal isOpen={isOpen} onRequestClose={toggleModal} ariaHideApp={false}>
-          <div>{modalData.name}</div>
-          <div>{modalData.title}</div>
-          <div>{modalData.tags}</div>
-          <hr />
-          <div>{modalData.blurb}</div>
-          <ChampionChart statData={modalData.stats} />
-          {/* {modalData.info.map(([key,item])=>(<div>{key}{item}</div>))} */}
-          <button onClick={toggleModal}>Close modal</button>
+        <Modal
+          // className={modalstyles.wrapper}
+          isOpen={isOpen}
+          onRequestClose={toggleModal}
+          ariaHideApp={false}
+        >
+          <div className={modalstyles.wrapper}>
+            <div className={modalstyles.modalheader}>
+              <div className={modalstyles.modalname}>{modalData.name}</div>
+              <div className={modalstyles.modaltitle}>{modalData.title}</div>
+              <div className={modalstyles.modaltags}>{modalData.tags}</div>
+            </div>
+            <hr />
+            <div className={modalstyles.modalbody}>
+              <div className={modalstyles.modalblurb}>{modalData.blurb}</div>
+              <ChampionChart statData={modalData.stats} />
+            </div>
+            {/* {modalData.info.map(([key,item])=>(<div>{key}{item}</div>))} */}
+            <button onClick={toggleModal}>Close modal</button>
+          </div>
         </Modal>
       </div>
     </div>
