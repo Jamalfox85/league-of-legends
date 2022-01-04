@@ -96,7 +96,7 @@ const Main = ({ searchData }) => {
             <div className={styles.image}>
               <img
                 alt="Champion Portrait Not Available"
-                src={`http://ddragon.leagueoflegends.com/cdn/5.9.1/img/champion/${value.image.full}`}
+                src={`https://ddragon.leagueoflegends.com/cdn/5.9.1/img/champion/${value.image.full}`}
               />
             </div>
             {/* <button onClick={() => toggleModal(key)}> */}
