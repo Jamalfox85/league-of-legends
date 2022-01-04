@@ -43,7 +43,7 @@ const Main = ({ searchData }) => {
 
   useEffect(() => {
     fetch(
-      "http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/champion.json"
+      "https://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/champion.json"
     )
       .then((response) => {
         if (response.ok) {
